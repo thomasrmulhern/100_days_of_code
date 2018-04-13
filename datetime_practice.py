@@ -47,12 +47,16 @@ def time_between_shutdowns(loglines):
        Extract shutdown events ("Shutdown initiated") from loglines and calculate the
        timedelta between the first and last one.
        Return this datetime.timedelta object.'''
-    pass
+
+    line = [re.search("Shutdown initiated", loglines) for log in loglines]
+    dt = [convert_to_datetime(lines) for lines in line]
+    return datetime.timedelta(dt[len(dt)]-dt[0])
+    
 
 
-line1 = 'ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file'
-line2 = 'INFO 2015-10-03T10:12:51 supybot Shutdown initiated.'
-line3 = 'INFO 2016-09-03T02:11:22 supybot Shutdown complete.'
-print(convert_to_datetime(line1))
-print(convert_to_datetime(line2))
-print(convert_to_datetime(line3))
+# line1 = 'ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file'
+# line2 = 'INFO 2015-10-03T10:12:51 supybot Shutdown initiated.'
+# line3 = 'INFO 2016-09-03T02:11:22 supybot Shutdown complete.'
+# print(convert_to_datetime(line1))
+# print(convert_to_datetime(line2))
+# print(convert_to_datetime(line3))
