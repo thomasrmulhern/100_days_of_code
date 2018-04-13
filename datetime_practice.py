@@ -16,6 +16,8 @@ with open(logfile) as f:
 
 # for you to code:
 
+import re
+
 def convert_to_datetime(line):
     '''TODO 1:
        Given a log line extract its timestamp and convert it to a datetime object.
@@ -23,7 +25,7 @@ def convert_to_datetime(line):
        INFO 2014-07-03T23:27:51 supybot Shutdown complete.
        returns:
        datetime(2014, 7, 3, 23, 27, 51)'''
-    import re
+
     line = 'INFO 2014-07-03T23:27:51 supybot Shutdown complete.'
     x = re.search('(\d+\W){2}\d+', line)
     y = re.search('(\d+\W){3}', line)
@@ -47,3 +49,11 @@ def time_between_shutdowns(loglines):
        timedelta between the first and last one.
        Return this datetime.timedelta object.'''
     pass
+
+
+line1 = 'ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file'
+line2 = 'INFO 2015-10-03T10:12:51 supybot Shutdown initiated.'
+line3 = 'INFO 2016-09-03T02:11:22 supybot Shutdown complete.'
+print(convert_to_datetime(line1))
+print(convert_to_datetime(line2))
+print(convert_to_datetime(line3))
