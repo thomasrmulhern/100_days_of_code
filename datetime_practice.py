@@ -26,7 +26,6 @@ def convert_to_datetime(line):
        returns:
        datetime(2014, 7, 3, 23, 27, 51)'''
 
-    line = 'INFO 2014-07-03T23:27:51 supybot Shutdown complete.'
     x = re.search('(\d+\W){2}\d+', line)
     y = re.search('(\d+\W){3}', line)
     x = x.group(0)
